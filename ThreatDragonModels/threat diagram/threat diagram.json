@@ -28,7 +28,7 @@
               "threats": [
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "title": "Attack on vulnerable software versions",
                   "type": "Elevation of privilege",
                   "description": "An attacker might attempt to directly target vulnerable software versions running on the server.",
@@ -175,7 +175,7 @@
               "threats": [
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "type": "Spoofing",
                   "title": "Session hi-jacking",
                   "description": "An attacker which managed to obtain the session token of a user may be able to impersonate the user.",
@@ -279,7 +279,7 @@
                   "title": "Docker privilege escalation vulnerabilities",
                   "type": "Elevation of privilege",
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "description": "An attacker that has gained access to the system as a regular user might be able to leverage the docker permission and create symbolic links to the file system. Allowing the attacker to modify sensitive files in the system that can be used for privilege escalation.",
                   "mitigation": "Only root user have the permission to configure dockers."
                 },
@@ -290,6 +290,14 @@
                   "title": "Malicious form input",
                   "description": "An attacker might include malicious code such as Javascript or SQL queries within form input and managed to supersede client-side sanitisations.",
                   "mitigation": "Perform a server-side sanitisation of the form input prior to processing. All database queries will only be done by the Bastion Host."
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "title": "Brute force login attempt",
+                  "type": "Spoofing",
+                  "description": "An attacker might attempt to brute force login credentials.",
+                  "mitigation": "All authentication process requires an OTP which will be sent to the user's registered email."
                 }
               ],
               "attrs": {
@@ -719,9 +727,9 @@
                   "title": "Man-in-the-middle (Network sniffing)",
                   "type": "Information disclosure",
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "Low",
                   "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
-                  "mitigation": "Authentication process will use the Challenge/Response method where no password will traverse through the internet."
+                  "mitigation": "The authentication process will use the Challenge/Response method where no password will traverse through the internet. \nAll communication between the Digital Ocean and Bastion Host is encrypted."
                 },
                 {
                   "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
@@ -774,16 +782,44 @@
                 }
               ],
               "z": 23,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "HTTPS",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "ruleId": "4adaa48a-0345-4533-a189-64c98c4420dd",
+                  "title": "Mimicking  authentication response messages",
+                  "type": "Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "An attacker might mimic a successful authentication response message from the Bastion Host or apply replay attack techniques.",
+                  "mitigation": "All successful authentication response messages must be accompanied by the appropriate timestamp and will be signed with the Bastion Host's private key."
+                },
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Low",
+                  "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
+                  "mitigation": "The authentication process will use the Challenge/Response method where no password will traverse through the internet. \nAll communication between the Digital Ocean and Bastion Host is encrypted."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "title": "Chosen plaintext attack",
+                  "description": "An attacker might mimic the Bastion Host and send the challenge message containing the attacker's chosen plaintext in order to obtain the relative ciphertext produced by the user's key.",
+                  "mitigation": "Only packets signed by the Bastion Host's private key will be accepted."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
