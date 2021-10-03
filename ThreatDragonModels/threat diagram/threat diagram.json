@@ -1120,16 +1120,42 @@
                 }
               ],
               "z": 28,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "SSH",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "title": "Brute force SSH login",
+                  "description": "An attacker might attempt to brute force SSH credentials in order to gain access to the Bastion Host & Database.",
+                  "mitigation": "SSH login will only permit key-based authentication."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Low",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
+                  "type": "Information disclosure",
+                  "mitigation": "All network traffic will be encrypted by default."
+                },
+                {
+                  "status": "Open",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "title": "Replay attack",
+                  "description": "An attacker might attempt to perform a replay attack on a fund transfer request packet to send money from another user's account into his/her own account.",
+                  "mitigation": "All transaction requests are coupled with a timestamp and signed by the Digital Ocean's private key."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
@@ -1165,16 +1191,26 @@
                 }
               ],
               "z": 29,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "SSH",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Low",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "type": "Information disclosure",
+                  "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
+                  "mitigation": "All communication between the Digital Ocean and Bastion Host is encrypted."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
