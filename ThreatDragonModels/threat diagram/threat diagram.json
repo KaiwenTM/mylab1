@@ -267,7 +267,7 @@
               },
               "position": {
                 "x": 665,
-                "y": 33
+                "y": 32
               },
               "angle": 0,
               "id": "7aca7fd7-3c2e-4f7a-b8c2-4ab814629a6f",
@@ -289,7 +289,7 @@
                   "type": "Tampering",
                   "title": "Malicious form input",
                   "description": "An attacker might include malicious code such as Javascript or SQL queries within form input and managed to supersede client-side sanitisations.",
-                  "mitigation": "Perform a server-side sanitisation of the form input prior to processing. All database queries will only be done by the Bastion Host."
+                  "mitigation": "Perform a server-side sanitisation of the form input prior to processing. All credentials-related database queries will only be done by the Bastion Host."
                 },
                 {
                   "status": "Open",
@@ -411,22 +411,40 @@
                 "height": 100
               },
               "position": {
-                "x": 666,
+                "x": 667,
                 "y": 183
               },
               "angle": 0,
               "id": "72edb413-a2d2-4350-89b8-2872f42d7f04",
               "z": 14,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Elevation of privilege",
+                  "title": "Docker privilege escalation vulnerabilities",
+                  "description": "An attacker that has gained access to the system as a regular user might be able to leverage the docker permission and create symbolic links to the file system. Allowing the attacker to modify sensitive files in the system that can be used for privilege escalation.",
+                  "mitigation": "Only root user have permission to configure dockers."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "title": "Malicious form input",
+                  "description": "An attacker might include malicious code such as Javascript or SQL queries within form input and managed to supersede client-side sanitisations.",
+                  "mitigation": "Perform a server-side sanitisation of the form input prior to processing"
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Balance\nMicrosystem"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
@@ -531,16 +549,26 @@
               "angle": 0,
               "id": "25fef45f-29c4-49cd-bfc7-1725633e5fbd",
               "z": 17,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "mitigation": "Only root user have the permission to configure dockers.",
+                  "title": "Docker privilege escalation vulnerabilities",
+                  "description": "An attacker that has gained access to the system as a regular user might be able to leverage the docker permission and create symbolic links to the file system. Allowing the attacker to modify sensitive files in the system that can be used for privilege escalation."
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "Payee\nMicrosystem"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
