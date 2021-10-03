@@ -159,14 +159,24 @@
                 }
               ],
               "z": 8,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "RESP",
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "title": "Session hi-jacking",
+                  "description": "An attacker which managed to obtain the session token of a user may be able to impersonate the user.",
+                  "mitigation": "All session tokens are coupled with IP addresses that completed the authentication. If another IP address attempts to use the session token, the session will be terminated."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
@@ -1090,16 +1100,18 @@
                   "title": "Malicious form input",
                   "type": "Tampering",
                   "status": "Open",
-                  "severity": "Medium",
-                  "description": ""
+                  "severity": "High",
+                  "description": "An attacker can send malicious form input such as Javascripts and SQL injections.",
+                  "mitigation": "All input will be sanitised and removed of any special characters."
                 },
                 {
                   "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
                   "title": "Man-in-the-middle (Network sniffing)",
                   "type": "Information disclosure",
                   "status": "Open",
-                  "severity": "Medium",
-                  "description": ""
+                  "severity": "Low",
+                  "description": "An attacker might sniff the network to obtain sensitive information such as login credentials.",
+                  "mitigation": "All packets sent over the internet are encrypted over HTTPS."
                 },
                 {
                   "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
@@ -1107,7 +1119,8 @@
                   "type": "Denial of service",
                   "status": "Open",
                   "severity": "Medium",
-                  "description": ""
+                  "description": "An attacker purposefully flood requests to the server trying to hog server resources from being used for legitimate requests.",
+                  "mitigation": "IP rate-limiting are established to limit the number of packets accepted by a specific IP address within a time frame."
                 }
               ],
               "attrs": {
@@ -1151,16 +1164,27 @@
                 }
               ],
               "z": 33,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "HTTPS",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "An attacker might sniff the network to obtain sensitive information such as login credentials.",
+                  "mitigation": "All packets sent over the internet are encrypted over HTTPS."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             }
