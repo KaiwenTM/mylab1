@@ -569,9 +569,9 @@
                 },
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "type": "Repudiation",
-                  "title": "User deny ownership of transaction",
+                  "title": "User denying ownership of transaction",
                   "description": "A user might deny the ownership of a transaction claiming that it was performed without their permission.",
                   "mitigation": "All transactions will require an OTP which will be sent to the user registered email coupled with a summary of the transaction. Any authorised transaction will therefore assume that the owner of the account is the person authorising the transaction."
                 }
