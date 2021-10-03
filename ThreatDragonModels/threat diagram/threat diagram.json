@@ -558,6 +558,13 @@
                   "mitigation": "Only root user have the permission to configure dockers.",
                   "title": "Docker privilege escalation vulnerabilities",
                   "description": "An attacker that has gained access to the system as a regular user might be able to leverage the docker permission and create symbolic links to the file system. Allowing the attacker to modify sensitive files in the system that can be used for privilege escalation."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "title": "Malicious form input",
+                  "description": "An attacker might include malicious code such as Javascript or SQL queries within form input and managed to supersede client-side sanitisations."
                 }
               ],
               "attrs": {
@@ -843,10 +850,11 @@
                 },
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "High",
                   "type": "Denial of service",
                   "title": "DoS attack",
-                  "description": ""
+                  "description": "An attacker can flood the Bastion host with requests that hogs servers resources from being able to service legitimate requests.",
+                  "mitigation": "Only packets signed by the Bastion Host's private key will be processed."
                 }
               ],
               "attrs": {
@@ -992,11 +1000,19 @@
                 },
                 {
                   "status": "Open",
-                  "severity": "Medium",
+                  "severity": "Low",
                   "title": "Man-in-the-middle (Network sniffing)",
                   "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
                   "type": "Information disclosure",
                   "mitigation": "All network traffic will be encrypted by default."
+                },
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "title": "DoS attack",
+                  "description": "An attacker can flood the Bastion host with requests that hogs servers resources from being able to service legitimate requests.",
+                  "mitigation": "A host-based firewall will be set up to only allow packets from the Digital Ocean IP address."
                 }
               ],
               "attrs": {
@@ -1040,16 +1056,26 @@
                 }
               ],
               "z": 27,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "SSH",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Low",
+                  "type": "Information disclosure",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
+                  "mitigation": "All communication between the Digital Ocean and Bastion Host is encrypted."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
