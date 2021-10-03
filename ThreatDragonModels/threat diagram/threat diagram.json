@@ -82,6 +82,7 @@
               "id": "de1e3b02-068c-4f1a-9b13-eb53c55f4005",
               "z": 6,
               "hasOpenThreats": false,
+              "storesCredentials": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
@@ -266,7 +267,7 @@
               },
               "position": {
                 "x": 665,
-                "y": 34
+                "y": 33
               },
               "angle": 0,
               "id": "7aca7fd7-3c2e-4f7a-b8c2-4ab814629a6f",
@@ -644,6 +645,7 @@
               "id": "e2a96adf-fcbe-4864-9964-0b5d21e7aac4",
               "z": 21,
               "hasOpenThreats": false,
+              "storesCredentials": true,
               "attrs": {
                 ".element-shape": {
                   "class": "element-shape hasNoOpenThreats isInScope"
