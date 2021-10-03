@@ -709,16 +709,36 @@
                 }
               ],
               "z": 22,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "protocol": "HTTPS",
               "isEncrypted": true,
               "isPublicNetwork": true,
+              "threats": [
+                {
+                  "ruleId": "13000296-b17d-4b72-9cc4-f5cc33f80e4c",
+                  "title": "Man-in-the-middle (Network sniffing)",
+                  "type": "Information disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "An attacker sniffing the public networks might be able to obtain sensitive login credentials.",
+                  "mitigation": "Authentication process will use the Challenge/Response method where no password will traverse through the internet."
+                },
+                {
+                  "ruleId": "edb05d76-a695-455f-947b-7d67b78bc31d",
+                  "title": "DoS attack",
+                  "type": "Denial of service",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "description": "An attacker can flood the Bastion host with requests that hogs servers resources from being able to service legitimate requests.",
+                  "mitigation": "A host-based firewall will be set up to only allow packets from the Digital Ocean IP address."
+                }
+              ],
               "attrs": {
                 ".marker-target": {
-                  "class": "marker-target hasNoOpenThreats isInScope"
+                  "class": "marker-target hasOpenThreats isInScope"
                 },
                 ".connection": {
-                  "class": "connection hasNoOpenThreats isInScope"
+                  "class": "connection hasOpenThreats isInScope"
                 }
               }
             },
