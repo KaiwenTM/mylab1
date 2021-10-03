@@ -24,16 +24,26 @@
               "angle": 0,
               "id": "bb4285af-5ab8-4e82-ab65-41d849d073f0",
               "z": 2,
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Attack on vulnerable software versions",
+                  "type": "Elevation of privilege",
+                  "description": "An attacker might attempt to directly target vulnerable software versions running on the server.",
+                  "mitigation": "An automated reminder email will be sent to system administrators every 2 months to check the software versions on the servers."
+                }
+              ],
               "attrs": {
                 ".element-shape": {
-                  "class": "element-shape hasNoOpenThreats isInScope"
+                  "class": "element-shape hasOpenThreats isInScope"
                 },
                 "text": {
                   "text": "API Gateway"
                 },
                 ".element-text": {
-                  "class": "element-text hasNoOpenThreats isInScope"
+                  "class": "element-text hasOpenThreats isInScope"
                 }
               }
             },
